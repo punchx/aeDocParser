@@ -21,7 +21,7 @@ axios.get(url).then(function(response) {
 }).then(function(linksArr) {
 
 		for(var i = 0; i < linksArr.length; i++) {
-			axios.get(url + 'layers/layer/').then(function(response) {
+			axios.get(url + linksArr[i]).then(function(response) {
 				let stream = fs.createWriteStream(path.resolve(__dirname, 'streamoutput.json'), {flags: 'a'});
 				let obj = {};
 				const $ = cheerio.load(response.data);
